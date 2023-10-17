@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1697563970884,
+      "tag": "0000_perpetual_midnight",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1697564933162,
+      "tag": "0001_lame_rhodey",
+      "breakpoints": true
+    }
+  ]
+}
