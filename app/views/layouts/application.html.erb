@@ -15,7 +15,9 @@
   <body>
     
     <%= render 'layouts/navbar' %>
-    <%= render 'layouts/fillform' %>
+    <% if ENV['ANKETA_ACTIVE'] == 'YES' %>
+      <%= render 'layouts/fillform' %>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
