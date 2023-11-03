@@ -5,7 +5,8 @@ class TeamsController < ApplicationController
 
   # GET /teams or /teams.json
   def index
-    @teams = Team.all
+    #show only teams that the user is in
+    @teams = current_user.teams
   end
 
   # GET /teams/1 or /teams/1.json
@@ -50,6 +51,36 @@ class TeamsController < ApplicationController
       end
     end
   end
+
+  def join
+    if request.post?
+      @team = Team.find_by(code: params[:code])
+      if @team
+        if @team.users.include?(current_user)
+          flash.now[:alert] = 'You are already in the team.'
+          render :join, status: :unprocessable_entity
+          return
+        else
+          @team.users << current_user
+          redirect_to @team, notice: 'You have joined the team successfully!'
+        end
+      else
+        flash.now[:alert] = 'Team with the provided code does not exist.'
+        render :join, status: :unprocessable_entity
+      end
+    end
+  end
+
+  def leave
+    @team = Team.find(params[:id])
+    if @team.users.include?(current_user)
+      @team.users.delete(current_user)
+      redirect_to teams_path, notice: 'You have left the team successfully!'
+    else
+      redirect_to teams_path, alert: 'You are not in the team.'
+    end
+  end
+
 
   # DELETE /teams/1 or /teams/1.json
   def destroy
