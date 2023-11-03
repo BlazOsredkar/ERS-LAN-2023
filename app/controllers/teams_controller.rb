@@ -5,8 +5,8 @@ class TeamsController < ApplicationController
 
   # GET /teams or /teams.json
   def index
-    #show only teams that the user is in
-    @teams = current_user.teams
+    #show only teams that the user is in or is the owner of it
+    @teams = Team.where(user_id: current_user.id).or(Team.where(id: current_user.teams.pluck(:id)))
   end
 
   # GET /teams/1 or /teams/1.json
