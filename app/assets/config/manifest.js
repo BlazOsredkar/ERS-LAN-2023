@@ -4,3 +4,5 @@
 //= link_tree ../../../vendor/javascript .js
 //= link favicon/browserconfig.xml
 //= link popper.js
+//= link favicon/site.webmanifest
+//= link favicon/browserconfig.xml
