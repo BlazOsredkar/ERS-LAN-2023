@@ -1,0 +1,10 @@
+.home-carusel {
+    padding: 5% 5%;
+    background-color: #DABD6C;
+}
+
+.main-show-homepage-carusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
