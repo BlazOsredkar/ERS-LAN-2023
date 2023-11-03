@@ -8,8 +8,17 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV['MAIL_HOST'],
+    port:                 587,
+    domain:               ENV['MAIL_DOMAIN'],
+    user_name:            ENV['MAIL_USER'],
+    password:             ENV['MAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
   # Do not eager load code on boot.
   config.eager_load = false
 
