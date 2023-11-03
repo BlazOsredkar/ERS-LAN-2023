@@ -63,17 +63,22 @@ class TeamsController < ApplicationController
   def join
     if request.post?
       @team = Team.find_by(code: params[:code])
-      if @team
-        if @team.users.include?(current_user)
-          flash.now[:alert] = 'You are already in the team.'
-          render :join, status: :unprocessable_entity
-          return
+      if @team.users.count < 4
+        if @team
+          if @team.users.include?(current_user)
+            flash.now[:alert] = 'You are already in the team.'
+            render :join, status: :unprocessable_entity
+            return
+          else
+            @team.users << current_user
+            redirect_to @team, notice: 'You have joined the team successfully!'
+          end
         else
-          @team.users << current_user
-          redirect_to @team, notice: 'You have joined the team successfully!'
+          flash.now[:alert] = 'Team with the provided code does not exist.'
+          render :join, status: :unprocessable_entity
         end
       else
-        flash.now[:alert] = 'Team with the provided code does not exist.'
+        flash.now[:alert] = 'Team is full.'
         render :join, status: :unprocessable_entity
       end
     end

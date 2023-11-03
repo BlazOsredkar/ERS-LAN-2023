@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_175010) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_184127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_175010) do
     t.index ["user_id"], name: "index_teams_users_on_user_id"
   end
 
+  create_table "user_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,9 +55,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_175010) do
     t.string "surname"
     t.boolean "has_equipment"
     t.string "username"
+    t.bigint "user_status_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_status_id"], name: "index_users_on_user_status_id"
   end
 
   add_foreign_key "teams", "users"
+  add_foreign_key "users", "user_statuses"
 end

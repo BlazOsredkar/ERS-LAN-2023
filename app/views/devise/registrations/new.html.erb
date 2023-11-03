@@ -41,6 +41,13 @@
     <%= f.check_box :has_equipment %>
   </div>
 
+
+   <div class="field">
+    <%= f.label :user_status_id %><br />
+    <%= f.select :user_status_id, options_for_select(UserStatus.all.map{ |status| [status.name, status.id] }), {} %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
