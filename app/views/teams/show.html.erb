@@ -2,9 +2,17 @@
 
 <%= render @team %>
 
-<div>
+<!-- Show owner's email -->
+<p>Owner: <%= @team.user.email %></p>
+
+<!-- Show all users' email addresses in the team -->
+<p>Team Members: <%= @team.users.map(&:email).join(', ') %></p>
+
+
+<% if current_user == @team.user %>
   <%= link_to "Edit this team", edit_team_path(@team) %> |
   <%= link_to "Back to teams", teams_path %>
 
   <%= button_to "Destroy this team", @team, method: :delete %>
-</div>
+<% end %>
+

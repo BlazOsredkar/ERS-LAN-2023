@@ -1,5 +1,6 @@
 <div id="<%= dom_id team %>">
     <p><%= team.name %></p>
     <p><%= team.code %></p>
+
     <%= link_to 'Leave Team', leave_team_path(team), method: :delete %>
 </div>

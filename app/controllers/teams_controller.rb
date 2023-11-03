@@ -11,6 +11,10 @@ class TeamsController < ApplicationController
 
   # GET /teams/1 or /teams/1.json
   def show
+    #show all users email that are in the team
+    @users = @team.users
+    #show the owner of the team
+    @owner = User.find(@team.user_id)
   end
 
   # GET /teams/new
@@ -20,6 +24,10 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+      #check if the user is the owner of the team
+      if @team.user_id != current_user.id
+        redirect_to teams_path, alert: 'You are not the owner of the team.'
+      end
   end
 
   # POST /teams or /teams.json
