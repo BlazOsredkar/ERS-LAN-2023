@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin_user!
-    redirect_to root_path, alert: 'Nisi admin!' unless current_user.admin?
+    authenticate_user!
+    unless current_user.admin?
+      flash[:alert] = "Nimaš dovoljenja za ogled te strani."
+      redirect_to root_path
+    end
   end
 end

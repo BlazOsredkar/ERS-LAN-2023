@@ -15,6 +15,17 @@ ActiveAdmin.register Team do
   #   permitted
   # end
   #
+  #
+
+  #create remove_from_team_admin_team_path
+  member_action :remove_from_team, method: :delete do
+    team = Team.find(params[:id])
+    user = User.find(params[:user_id])
+    team.users.delete(user)
+    redirect_to admin_team_path(team), notice: 'Uporabnik je uspešno odstranjen iz ekipe.'
+  end
+
+
 
   index do
     selectable_column
@@ -23,6 +34,27 @@ ActiveAdmin.register Team do
       column "Koda", :code
       column "Lastnik", :user
     actions
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :code
+      row :user
+      row :users do |team|
+        table_for team.users.order('username ASC') do
+          column "Včlanjeni" do |user|
+            link_to user.username, admin_user_path(user)
+          end
+          column "Ime in priimek" do |user|
+            user.name + " " + user.surname
+          end
+          column "Vrži iz ekipe" do |user|
+            link_to "Vrži", remove_from_team_admin_team_path(team, user_id: user.id), method: :delete, data: { confirm: 'Ali si prepričan?' }
+          end
+        end
+      end
+    end
   end
 
 end
