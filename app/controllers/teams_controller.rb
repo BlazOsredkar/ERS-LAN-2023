@@ -50,12 +50,17 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1 or /teams/1.json
   def update
     respond_to do |format|
-      if @team.update(team_params)
-        format.html { redirect_to team_url(@team), notice: "Ekipa je bila uspešno urejena!" }
-        format.json { render :show, status: :ok, location: @team }
+      #check if the user is the owner of the team
+      if @team.user_id != current_user.id
+        redirect_to teams_path, alert: 'Nisi lastnik/ca te ekipe.'
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        if @team.update(team_params)
+          format.html { redirect_to team_url(@team), notice: "Ekipa je bila uspešno urejena!" }
+          format.json { render :show, status: :ok, location: @team }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
