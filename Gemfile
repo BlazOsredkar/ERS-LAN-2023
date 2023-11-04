@@ -77,6 +77,8 @@ gem "bootstrap", "~> 5.0"
 gem 'sassc-rails'
 gem 'arctic_admin'
 gem 'activeadmin'
+gem "chartkick"
+
 
 gem 'sprockets', '< 4.0.0'
 
