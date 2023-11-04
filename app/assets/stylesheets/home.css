@@ -8,3 +8,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.alert {
+    --bs-alert-margin-bottom: 0.5px !important;
+}

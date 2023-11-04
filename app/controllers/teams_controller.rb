@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
   def edit
       #check if the user is the owner of the team
       if @team.user_id != current_user.id
-        redirect_to teams_path, alert: 'You are not the owner of the team.'
+        redirect_to teams_path, alert: 'Nisi lastnik/ca te ekipe.'
       end
   end
 
@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to team_url(@team), notice: "Team was successfully created." }
+        format.html { redirect_to team_url(@team), notice: "Ekipa je bila uspešno ustvarjena!" }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to team_url(@team), notice: "Team was successfully updated." }
+        format.html { redirect_to team_url(@team), notice: "Ekipa je bila uspešno urejena!" }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,34 +63,34 @@ class TeamsController < ApplicationController
   def join
     if request.post?
       @team = Team.find_by(code: params[:code])
-      if @team.users.count < 4
-        if @team
-          if @team.users.include?(current_user)
-            flash.now[:alert] = 'You are already in the team.'
+      if @team
+        if @team.users.count < 4
+          if @team.user_id == current_user.id || @team.users.include?(current_user)
+            flash[:alert] = 'V to ekipo si že včlanjen/a.'
             render :join, status: :unprocessable_entity
-            return
           else
             @team.users << current_user
-            redirect_to @team, notice: 'You have joined the team successfully!'
+            redirect_to @team, notice: 'Uspešno si se včlanil/a v ekipo.'
           end
         else
-          flash.now[:alert] = 'Team with the provided code does not exist.'
+          flash[:alert] = 'Ekipo je že polna.'
           render :join, status: :unprocessable_entity
         end
       else
-        flash.now[:alert] = 'Team is full.'
+        flash.now[:alert] = "Ekipa s to kodo ne obstaja."
         render :join, status: :unprocessable_entity
       end
     end
   end
 
+
   def leave
     @team = Team.find(params[:id])
     if @team.users.include?(current_user)
       @team.users.delete(current_user)
-      redirect_to teams_path, notice: 'You have left the team successfully!'
+      redirect_to teams_path, notice: 'Uspešno si zapustil/a ekipo.'
     else
-      redirect_to teams_path, alert: 'You are not in the team.'
+      redirect_to teams_path, alert: 'Nisi v tej ekipi.'
     end
   end
 
@@ -100,7 +100,7 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: "Team was successfully destroyed." }
+      format.html { redirect_to teams_url, notice: "Ekipa je bila uspešno izbrisana!" }
       format.json { head :no_content }
     end
   end
