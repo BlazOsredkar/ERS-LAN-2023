@@ -10,10 +10,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+
+  def admin?
+    self.isadmin == true
+  end
+
   private
 
   def downcase_username
     self.username = username.downcase if username.present?
   end
+
   
 end
