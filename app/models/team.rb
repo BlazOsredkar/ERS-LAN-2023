@@ -7,4 +7,8 @@ class Team < ApplicationRecord
     def self.ransackable_attributes(auth_object = nil)
         ["code", "created_at", "id", "name", "updated_at", "user_id"]
     end
+
+    def self.ransackable_associations(auth_object = nil)
+        ["user", "users"]
+    end
 end
