@@ -102,11 +102,14 @@ class TeamsController < ApplicationController
 
   # DELETE /teams/1 or /teams/1.json
   def destroy
-    @team.destroy
-
-    respond_to do |format|
-      format.html { redirect_to teams_url, notice: "Ekipa je bila uspešno izbrisana!" }
-      format.json { head :no_content }
+    #check if the user is the owner of the team
+    if @team.user_id != current_user.id
+      redirect_to teams_path, alert: 'Nisi lastnik/ca te ekipe.'
+    else
+      @team.destroy
+      respond_to do |format|
+        format.html { redirect_to teams_url, notice: "Ekipa je bila uspešno izbrisana!" }
+        format.json { head :no_content }
     end
   end
 
