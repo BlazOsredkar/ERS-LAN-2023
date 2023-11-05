@@ -11,12 +11,17 @@ ActiveAdmin.setup do |config|
   #
   # config.site_title_link = "/"
   #
+  config.register_stylesheet 'custom_admin.css'
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
-      admin.add_current_user_to_menu  menu
       menu.add label: 'Exit', url: '/', html_options: { class: 'custom-button-admin-panel' }
+      #add logout button to menu
+      admin.add_logout_button_to_menu menu
     end
   end
+
+  config.current_user_method = :current_user
+
 
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
@@ -131,13 +136,13 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  config.logout_link_path = :destroy_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
-  # config.logout_link_method = :get
+  config.logout_link_method = :delete
 
   # == Root
   #

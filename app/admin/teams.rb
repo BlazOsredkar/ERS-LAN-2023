@@ -16,6 +16,9 @@ ActiveAdmin.register Team do
   # end
   #
   #
+  #
+
+  remove_filter :games
 
   #create remove_from_team_admin_team_path
   member_action :remove_from_team, method: :delete do
@@ -33,6 +36,13 @@ ActiveAdmin.register Team do
       column "Ime", :name
       column "Koda", :code
       column "Lastnik", :user
+      column "Igre", :games do |team|
+        table_for team.games.order('name ASC') do
+          column "Igra" do |game|
+            link_to game.name, admin_game_path(game)
+          end
+        end
+      end
     actions
   end
 

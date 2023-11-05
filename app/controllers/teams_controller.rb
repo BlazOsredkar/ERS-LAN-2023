@@ -119,7 +119,7 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.fetch(:team, {}).permit(:name)
+      params.fetch(:team, {}).permit(:name, game_ids: [])
     end
 
     def generate_random_code

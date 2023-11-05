@@ -16,6 +16,16 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :game_ids, 'Izbrane igre' %>
+    <% Game.all.each do |game| %>
+      <div class="form-check">
+        <%= form.check_box :game_ids, { multiple: true }, game.id, nil %>
+        <%= form.label game.name, class: 'form-check-label' %>
+      </div>
+    <% end %>
+  </div>
+
 
   <div>
     <%= form.submit %>
