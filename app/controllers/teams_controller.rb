@@ -110,6 +110,7 @@ class TeamsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to teams_url, notice: "Ekipa je bila uspešno izbrisana!" }
         format.json { head :no_content }
+      end
     end
   end
 
