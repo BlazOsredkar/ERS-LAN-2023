@@ -15,7 +15,7 @@
   <body>
     
     <%= render 'layouts/navbar' %>
-    <% if ENV['ANKETA_ACTIVE'] == 'YES' %>
+    <% if ENV['ANKETA_ACTIVE'] == 'YES' && !cookies[:anketa_banner_closed]%>
       <%= render 'layouts/fillform' %>
     <% end %>
     <% flash.each do |key, message| %>
