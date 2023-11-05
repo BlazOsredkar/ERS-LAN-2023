@@ -19,6 +19,19 @@ ActiveAdmin.register_page "Dashboard" do
       pie_chart data, suffix: ' ekipe'
     end
 
+    panel "Status opreme" do
+    # Count the number of users with and without equipment
+    users_with_equipment = User.where(has_equipment: true).count
+    users_without_equipment = User.where(has_equipment: false).count
+
+    # Prepare data for the pie chart
+    data = [['Ima opremo', users_with_equipment], ['Nima opreme', users_without_equipment]]
+
+    # Render the pie chart
+    pie_chart data, suffix: ' users'
+  end
+
+
 
 
 
