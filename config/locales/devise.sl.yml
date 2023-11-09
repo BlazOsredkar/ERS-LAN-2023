@@ -1,0 +1,61 @@
+# Based on https://gist.github.com/samotarnik/4337418 (Devise 2.1.2) by @samotarnik
+sl:
+  devise:
+    confirmations:
+      confirmed: 'Vaš uporabniški račun je bil uspešno potrjen. Sedaj ste prijavljeni.'
+      send_instructions: 'V nekaj minutah boste prejeli elektronsko sporočilo z navodili za potrditev vašega uporabniškega računa.'
+      send_paranoid_instructions: 'Če je vaš elektronski naslov v naši bazi podatkov, boste na ta naslov v nekaj minutah prejeli navodila za potrditev vašega uporabniškega računa.'
+    failure:
+      already_authenticated: 'Ste že prijavljeni.'
+      inactive: 'Vaš uporabniški račun še ni bil aktiviran.'
+      invalid: 'Napačno uporabniško ime ali geslo.'
+      locked: 'Vaš uporabniški račun je zaklenjen.'
+      last_attempt: "Imate še en poskus preden se bo vaš račun zaklenil."
+      not_found_in_database: "Napačen elektronski naslov ali geslo."
+      timeout: 'Vaša seja je potekla. Prosimo, prijavite se ponovno.'
+      unauthenticated: 'Pred nadaljevanjem se morate prijaviti ali ustvariti nov uporabniški račun.'
+      unconfirmed: 'Pred nadaljevanjem morate potrditi vaš uporabniški račun.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Navodila za potrditev'
+      reset_password_instructions:
+        subject: 'Navodila za ponastavitev gesla'
+      unlock_instructions:
+        subject: 'Navodila za odklepanje'
+    omniauth_callbacks:
+      failure: 'Avtentikacija iz računa vrste %{kind} ni mogoča, ker "%{reason}".'
+      success: 'Uspešna avtenikacija iz računa vrste %{kind}.'
+    passwords:
+      no_token: "Do te strani lahko dostopate samo iz elektronskega sporočila za ponastavitev gesla. V kolikor ste na stran prišli iz tega sporočila, prosimo preverite, da ste uporabili celotni naveden naslov."
+      send_instructions: 'V nekaj minutah boste prejeli elektronsko sporočilo z navodili za ponastavitev vašega gesla.'
+      send_paranoid_instructions: "Če je vaš elektronski naslov v naši bazi podatkov, boste na ta naslov v nekaj minutah prejeli povezavo za ponastavitev gesla."
+      updated: 'Vaše geslo je bilo uspešno spremenjeno. Sedaj ste prijavljeni.'
+      updated_not_active: 'Vaše geslo je bilo uspešno spremenjeno.'
+    registrations:
+      destroyed: 'Nasvidenje! Vaš račun je bil uspešno preklican. Upamo, da se kmalu spet oglasite.'
+      signed_up: 'Dobrodošli! Uspešno ste ustvarili nov uporabniški račun.'
+      signed_up_but_inactive: 'Uspešno ste ustvarili nov uporabniški račun, vendar se ne morete prijaviti, ker vaš račun še ni bil aktiviran.'
+      signed_up_but_locked: 'Uspešno ste ustvarili nov uporabniški račun, vendar se ne morete prijaviti, ker je vaš račun zaklenjen.'
+      signed_up_but_unconfirmed: 'Sporočilo s povezavo za potrditev je bilo poslano na vaš elektronski naslov. Za aktivacijo vašega računa prosimo, sledite povezavi.'
+      update_needs_confirmation: "Vaš račun je bil uspešno posodobljen, vendar moramo preveriti vaš elektronski naslov. Prosimo, preverite vašo elektronsko pošto in kliknite na povezavo za potrditev da bo posodobitev vašega računa dokončna."
+      updated: 'Vaš uporabniški račun je bil uspešno posodobljen.'
+    sessions:
+      signed_in: 'Prijava uspešna.'
+      signed_out: 'Odjava uspešna.'
+      already_signed_out: 'Odjava uspešna.'
+    unlocks:
+      send_instructions: 'V nekaj minutah boste prejeli elektronsko sporočilo z navodili za odklepanje vašega uporabniškega računa.'
+      send_paranoid_instructions: 'Če vaš uporabniški račun obstaja, boste v nekaj minutah prejeli elektronsko sporočilo z navodili za odklepanje.'
+      unlocked: 'Vaš uporabniški račun je bil uspešno odklenjen. Prosimo, prijavite se za nadaljevanje.'
+  errors:
+    messages:
+      already_confirmed: "je že potrjen, prosimo poskusite se prijaviti"
+      confirmation_period_expired: "mora biti potrjen znotraj %{period}, prosimo zahtevajte novega"
+      expired: "je potekel, prosimo zahtevajte novega"
+      not_found: "ni bil najden"
+      not_locked: "ni bil zaklenjen"
+      not_saved:
+        one: "1 napaka preprečuje, da bi se podatek %{resource} shranil:"
+        two: "2 napaki preprečujeta, da bi se podatek %{resource} shranil:"
+        few: "%{count} napake preprečujejo, da bi se podatek %{resource} shranil:"
+        other: "%{count} napak preprečuje, da bi se podatek %{resource} shranil:"
