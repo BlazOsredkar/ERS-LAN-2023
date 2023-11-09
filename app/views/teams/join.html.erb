@@ -1,5 +1,5 @@
 <h2>Join a Team</h2>
 <%= form_tag('/join/team', method: :post) do %>
-  <%= text_field_tag :code, nil, placeholder: 'Enter Team Code' %>
-  <%= submit_tag 'Join Team' %>
+  <%= text_field_tag :team_code, nil, placeholder: "Enter team code", maxlength: 6 %>
+  <%= submit_tag "Join Team" %>
 <% end %>

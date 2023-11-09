@@ -32,6 +32,11 @@ class TeamsController < ApplicationController
 
   # POST /teams or /teams.json
   def create
+    if team_params[:name].blank?
+      redirect_to new_team_path, alert: 'Vnesi ime ekipe.'
+      return
+    end
+
     @team = Team.new(team_params)
     @team.code = generate_random_code
     @team.user_id = current_user.id
@@ -67,6 +72,11 @@ class TeamsController < ApplicationController
 
   def join
     if request.post?
+      #check if the user entered a code
+      if params[:code].blank?
+        redirect_to join_team_path, alert: 'Nisi vnesel kode ekipe. Poskusi znova.'
+        return
+      end
       @team = Team.find_by(code: params[:code])
       if @team
         if @team.users.count < 4
