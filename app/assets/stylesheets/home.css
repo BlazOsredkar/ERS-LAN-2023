@@ -12,3 +12,34 @@
 .alert {
     --bs-alert-margin-bottom: 0.5px !important;
 }
+
+/* Add styles to your stylesheet */
+
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+}
+
+.slide {
+  flex-shrink: 0;
+}
+
+.carousel-image {
+    display: none;
+    width: 100vw;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+
