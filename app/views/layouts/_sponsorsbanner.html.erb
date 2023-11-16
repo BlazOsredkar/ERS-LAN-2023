@@ -2,29 +2,31 @@
 <% total_images = image_paths.length %>
 <% min_images_needed = 3 - (total_images % 3) %>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <% (image_paths + image_paths.sample(min_images_needed)).each_slice(3).with_index do |image_slice, index| %>
-      <div class="carousel-item <%= 'active' if index.zero? %>">
-        <div class="row">
-          <% image_slice.each do |image_path| %>
-            <% image_path = asset_path(image_path.gsub('app/assets/images/', '')) %>
-            <div class="col-lg-4 col-md-4 col-sm-12"> <!-- Display 3 images on large/medium screens, and 1 image on smaller screens -->
-              <%= image_tag image_path, class: 'd-block w-100', data: { carousel_target: "slide" }, id: "carou" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+
+<h1>Naši sponzorji</h1>
+<div class="custom-carousel">
+  <div class="custom-carousel-item">
+    <%= link_to "https://eigre.si/", target:"_blank" do %>
+      <%= image_tag asset_path("sponsors/1.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
     <% end %>
   </div>
-
-  <!-- Previous and Next buttons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <div class="custom-carousel-item">
+    <%= link_to "https://scv.si/", target:"_blank" do %>
+      <%= image_tag asset_path("sponsors/2.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
+    <% end %>
+  </div>
+  <div class="custom-carousel-item">
+    <%= link_to "https://app.scv.si/", target:"_blank" do %>
+      <%= image_tag asset_path("sponsors/3.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
+    <% end %>
+  </div>
+  <div class="custom-carousel-item">
+    <%= link_to "https://www.facebook.com/mc.velenje/?locale=sl_SI", target:"_blank" do %>
+      <%= image_tag asset_path("sponsors/4.webp"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
+    <% end %>
+  </div>
+  <div class="custom-carousel-item">
+    <%= image_tag asset_path("sponsors/5.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
+  </div>
 </div>
+
