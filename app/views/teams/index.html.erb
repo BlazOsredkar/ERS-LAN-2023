@@ -12,7 +12,11 @@
           <% end %>
           <h3 class="card-title"><%= team.name %></h3>
           <div class="mb-1 text-muted">Ustvarjeno dne: <%= team.created_at %> </div>
-          <p class="card-text">Člani ekipe: <%= team.users.map(&:username).join(', ') %></p>
+          <% if team.users.count == 0 %>
+            <p class="card-text">Ta ekipa je <b>brez</b> članov</p>
+          <% else %>
+            <p class="card-text">Člani ekipe: <b><%= team.users.map(&:username).join(', ') %></b></p>
+          <% end %>
           <p class="card-text">Izbrane igre: <%= team.games.map(&:name).join(', ') %></p>
           <%= link_to "Pokaži to ekipo", team, class:"btn btn-primary" %>
           <% if team.is_verified %>
