@@ -18,6 +18,9 @@
     <% if ENV['ANKETA_ACTIVE'] == 'YES' && !cookies[:anketa_banner_closed]%>
       <%= render 'layouts/fillform' %>
     <% end %>
+    <% if !cookies[:discord_banner_closed]%>
+      <%= render 'layouts/discordbanner' %>
+    <% end %> 
     <% flash.each do |key, message| %>
     <div class="toast-container top-0 end-0 p-3">
       <div class="alert <%= flash_class(key) %> alert-dismissible fade show" role="alert">
