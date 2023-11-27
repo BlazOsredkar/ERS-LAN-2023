@@ -49,3 +49,12 @@
         display: none;
     }
 }
+
+.select-dropdown-login {
+    background-color: #2b2f32 !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    width: 100%;
+    border-radius: 5px;
+    
+}
