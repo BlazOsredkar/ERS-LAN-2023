@@ -3,7 +3,7 @@ sl:
   devise:
     confirmations:
       confirmed: 'Vaš uporabniški račun je bil uspešno potrjen. Sedaj ste prijavljeni.'
-      send_instructions: 'V nekaj minutah boste prejeli elektronsko sporočilo z navodili za potrditev vašega uporabniškega računa.'
+      send_instructions: 'Uspeh! V nekaj minutah boste prejeli elektronsko sporočilo z navodili za potrditev vašega uporabniškega računa (če ga ne prejmete, preverite mapo za nezaželeno pošto).'
       send_paranoid_instructions: 'Če je vaš elektronski naslov v naši bazi podatkov, boste na ta naslov v nekaj minutah prejeli navodila za potrditev vašega uporabniškega računa.'
     failure:
       already_authenticated: 'Ste že prijavljeni.'
