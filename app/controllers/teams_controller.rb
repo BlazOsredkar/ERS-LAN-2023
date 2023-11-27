@@ -73,11 +73,11 @@ class TeamsController < ApplicationController
   def join
     if request.post?
       #check if the user entered a code
-      if params[:code].blank?
+      if params[:team_code].blank?
         redirect_to join_team_path, alert: 'Nisi vnesel kode ekipe. Poskusi znova.'
         return
       end
-      @team = Team.find_by(code: params[:code])
+      @team = Team.find_by(code: params[:team_code])
       if @team
         if @team.users.count < 4
           if @team.user_id == current_user.id || @team.users.include?(current_user)
