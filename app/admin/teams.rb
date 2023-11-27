@@ -5,7 +5,7 @@ ActiveAdmin.register Team do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :code, :user_id
+  permit_params :name, :code, :user_id, :is_verified
   #
   # or
   #
@@ -19,6 +19,7 @@ ActiveAdmin.register Team do
   #
 
   remove_filter :games
+  remove_filter :is_verified
 
   #create remove_from_team_admin_team_path
   member_action :remove_from_team, method: :delete do

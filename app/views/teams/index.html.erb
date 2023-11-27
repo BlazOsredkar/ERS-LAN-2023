@@ -11,7 +11,7 @@
             <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/5</strong>
           <% end %>
           <h3 class="card-title"><%= team.name %></h3>
-          <div class="mb-1 text-muted">Ustvarjeno dne: <%= team.created_at %> </div>
+          <div class="mb-1 text-light">Ustvarjeno dne: <i><%= team.created_at %></i> </div>
           <% if team.users.count == 0 %>
             <p class="card-text">Ta ekipa je <b>brez</b> članov</p>
           <% else %>
@@ -21,7 +21,7 @@
           <%= link_to "Pokaži to ekipo", team, class:"btn btn-primary" %>
           <% if team.is_verified %>
             <div class="position-absolute top-0 end-0 mt-2 me-2 d-flex align-items-center">
-              <%= image_tag asset_path("checkmark.svg"), class:"checkmark-team"%>
+              <%= image_tag asset_path("checkmark.svg"), class:"checkmark-team me-1"%>
               <p class="text-success mb-0">Ta ekipa je potrjena</p>
             </div>
           <% end %>
