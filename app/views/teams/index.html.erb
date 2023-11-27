@@ -1,14 +1,14 @@
-
-<h1>Moje ekipe</h1>
+<body class="login-back">
+<br>
 <div id="teams" class="row row-cols-1 row-cols-md-4 g-2">
   <% @teams.each do |team| %>
     <div class="col">
-      <div class="card h-100">
+      <div class="card h-100 bg-dark text-light">
         <div class="card-body position-relative">
           <% if team.users.count == 5 %>
-              <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count %>/5</strong>
-            <% else %>
-              <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/5</strong>
+            <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count %>/5</strong>
+          <% else %>
+            <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/5</strong>
           <% end %>
           <h3 class="card-title"><%= team.name %></h3>
           <div class="mb-1 text-muted">Ustvarjeno dne: <%= team.created_at %> </div>
@@ -34,3 +34,5 @@
 
 
 <%= link_to "New team", new_team_path %>
+
+</body>
