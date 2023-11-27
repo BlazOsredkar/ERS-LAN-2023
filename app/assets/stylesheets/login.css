@@ -1,0 +1,44 @@
+.login-links {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.login-links a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.container-login {
+    background-color: #2b2f32;
+}
+
+.form-label {
+    color: #fff;
+}
+
+.form-control-lg {
+    background-color: #2b2f32 !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+}
+
+.form-control-lg:focus {
+    background-color: #2b2f32 !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+}
+
+.form-check-label {
+    color: #fff;
+}
+
+.form-check-input {
+    background-color: #2b2f32 !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+}
+
+.text-login-or {
+    color: #fff !important;
+}
