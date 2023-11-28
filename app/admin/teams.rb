@@ -37,6 +37,7 @@ ActiveAdmin.register Team do
       column "Ime", :name
       column "Koda", :code
       column "Lastnik", :user
+      column "Je potrjena", :is_verified
       column "Igre", :games do |team|
         table_for team.games.order('name ASC') do
           column "Igra" do |game|
