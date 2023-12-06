@@ -1,5 +1,11 @@
-<h2>Join a Team</h2>
+<body class="login-back">
+<div class="join_team_container">
+<h2 class="text-white join-team-text">Pridruži se ekipi</h2>
+
+<%= image_tag asset_path("join_team.svg"), class: 'img-fluid img-login' %>
 <%= form_tag('/join/team', method: :post) do %>
-  <%= text_field_tag :team_code, nil, placeholder: "Enter team code", maxlength: 6 %>
-  <%= submit_tag "Join Team" %>
+  <%= text_field_tag :team_code, nil, maxlength: 6, class:"form-control form-control-lg join-team-input" %>
+  <%= submit_tag "Pridruži se ekipi zdaj", class:"btn btn-primary btn-lg btn-block join-team-btn" %>
 <% end %>
+</div>
+</body>
