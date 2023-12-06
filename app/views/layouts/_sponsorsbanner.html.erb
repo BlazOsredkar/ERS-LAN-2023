@@ -3,7 +3,7 @@
 <% min_images_needed = 3 - (total_images % 3) %>
 
 
-<h1>Naši sponzorji</h1>
+<h1 class="text-white">Naši sponzorji</h1>
 <div class="custom-carousel">
   <div class="custom-carousel-item">
     <%= link_to "https://eigre.si/", target:"_blank" do %>
@@ -22,7 +22,7 @@
   </div>
   <div class="custom-carousel-item">
     <%= link_to "https://www.facebook.com/mc.velenje/?locale=sl_SI", target:"_blank" do %>
-      <%= image_tag asset_path("sponsors/4.webp"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
+      <%= image_tag asset_path("sponsors/4.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
     <% end %>
   </div>
   <div class="custom-carousel-item">
