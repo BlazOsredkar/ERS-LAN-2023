@@ -11,9 +11,27 @@ class DiscordNotificationsController < ApplicationController
 
     #check if the user is admin
     if current_user.admin?
-      channel.send_message(content)
-      bot.run(async = false) # Set async to true for async sending if needed
-      redirect_to discord_send_path, notice: 'Obvestilo je bilo uspešno poslano.'
+      # Example of a fancy message using Discord webhook format
+      fancy_message = {
+        embeds: [
+          {
+            title: 'Novo obvestilo',
+            description: content,
+            color: 002074, # Hex color code, you can use any color
+            fields: [],
+            author: {
+              name: 'Avtor obvestila: ' + current_user.username, # Replace with your name
+              icon_url: 'https://lanparty.scv.si/assets/poskus_1-89aca5f58d719f324493589859d8218bdf6084392abcdef6d2fc43443fea3bd2.png' # Replace with your author image URL
+            }
+          }
+        ]
+      }
+
+      # Example of sending the fancy message using webhook (replace 'WEBHOOK_URL' with your actual webhook URL)
+      require 'rest-client'
+      RestClient.post(ENV['SERVER_WEBHOOK'], fancy_message.to_json, content_type: :json)
+
+      render plain: 'Notification sent to Discord!'
     else
       redirect_to root_path, alert: 'Nimaš dovoljenja za ogled te strani.'
     end
