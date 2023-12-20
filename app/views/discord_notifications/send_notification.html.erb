@@ -1,0 +1,8 @@
+<!-- app/views/discord_notifications/send_notification.html.erb -->
+<h1>Send Notification to Discord</h1>
+<%= form_with(url: '/discord/send', method: 'post') do |form| %>
+  <%= form.label :content, 'Notification Content' %>
+  <%= form.text_area :content %>
+
+  <%= form.submit 'Send Notification' %>
+<% end %>

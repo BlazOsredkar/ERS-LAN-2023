@@ -1,0 +1,2 @@
+module DiscordNotificationsHelper
+end
