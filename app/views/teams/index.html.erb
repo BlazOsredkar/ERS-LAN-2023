@@ -5,9 +5,9 @@
     <div class="col">
       <div class="card h-100 bg-dark text-light">
         <div class="card-body position-relative">
-          <% if team.game && team.users.count == team.game.number_of_players %>
+          <% if team.game && team.users.count + 1 == team.game.number_of_players %>
             <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count %>/<%team.game.number_of_players%></strong>
-          <% elsif team.game && team.users.count != team.game.number_of_players  %>
+          <% elsif team.game && team.users.count + 1 != team.game.number_of_players  %>
             <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/<%team.game.number_of_players%></strong>
           <% else %>
             <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/(Ni igre)</strong>
