@@ -5,19 +5,23 @@
     <div class="col">
       <div class="card h-100 bg-dark text-light">
         <div class="card-body position-relative">
-          <% if team.users.count == 5 %>
-            <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count %>/5</strong>
+          <% if team.game && team.users.count == team.game.number_of_players %>
+            <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count %>/<%team.game.number_of_players%></strong>
+          <% elsif team.game && team.users.count != team.game.number_of_players  %>
+            <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/<%team.game.number_of_players%></strong>
           <% else %>
-            <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/5</strong>
+            <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/(Ni igre)</strong>
           <% end %>
           <h3 class="card-title"><%= team.name %></h3>
           <div class="mb-1 text-light">Ustvarjeno dne: <i><%= team.created_at %></i> </div>
+          <p class="card-text">Lastnik: <%= team.user.username  %></p>
           <% if team.users.count == 0 %>
             <p class="card-text">Ta ekipa je <b>brez</b> članov</p>
           <% else %>
             <p class="card-text">Člani ekipe: <b><%= team.users.map(&:username).join(', ') %></b></p>
           <% end %>
-          <p class="card-text">Izbrane igre: <%= team.games.map(&:name).join(', ') %></p>
+          <p class="card-text">Izbrana igra: <%= team.game.name if team.game %></p>
+
           <%= link_to "Pokaži to ekipo", team, class:"btn btn-primary" %>
           <% if team.is_verified %>
             <div class="position-absolute top-0 end-0 mt-2 me-2 d-flex align-items-center">

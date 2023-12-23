@@ -1,6 +1,6 @@
 # app/models/game.rb
 class Game < ApplicationRecord
-  has_and_belongs_to_many :teams, join_table: :team_games
+  has_many :teams
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "link", "name", "updated_at"]

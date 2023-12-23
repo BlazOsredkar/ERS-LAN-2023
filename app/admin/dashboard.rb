@@ -14,10 +14,11 @@ ActiveAdmin.register_page "Dashboard" do
     #show the number of selected games of teams (the number of teams that have selected the game, we have a many to many relationship with teams and games)
 
     panel "Izbrane igre" do
-      game_counts = Game.joins(:teams).group(:id).count
-      data = Game.all.map { |game| [game.name, (game_counts[game.id] || 0).to_i] }
-      pie_chart data, suffix: ' ekipe'
+      game_counts = Game.left_outer_joins(:teams).group(:name).count
+      data = Game.all.map { |game| [game.name, (game_counts[game.name] || 0).to_i] }
+      pie_chart data, suffix: ' teams'
     end
+
 
     panel "Status opreme" do
     # Count the number of users with and without equipment

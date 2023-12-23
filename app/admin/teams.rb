@@ -17,9 +17,11 @@ ActiveAdmin.register Team do
   #
   #
   #
+  #
 
-  remove_filter :games
+
   remove_filter :is_verified
+
 
   #create remove_from_team_admin_team_path
   member_action :remove_from_team, method: :delete do
@@ -38,13 +40,7 @@ ActiveAdmin.register Team do
       column "Koda", :code
       column "Lastnik", :user
       column "Je potrjena", :is_verified
-      column "Igre", :games do |team|
-        table_for team.games.order('name ASC') do
-          column "Igra" do |game|
-            link_to game.name, admin_game_path(game)
-          end
-        end
-      end
+      column "Izbrana igra", :game
     actions
   end
 
@@ -56,7 +52,7 @@ ActiveAdmin.register Team do
       row :users do |team|
         table_for team.users.order('username ASC') do
           column "Včlanjeni" do |user|
-            link_to user.username, admin_user_path(user)
+            link_to user.username, admin_user_path(ufauser)
           end
           column "Ime in priimek" do |user|
             user.name + " " + user.surname

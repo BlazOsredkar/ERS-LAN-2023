@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_224249) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_23_012426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_224249) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number_of_players", default: 0
   end
 
   create_table "team_games", force: :cascade do |t|
@@ -52,6 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_224249) do
     t.integer "code"
     t.bigint "user_id"
     t.boolean "is_verified", default: false
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_teams_on_game_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
@@ -100,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_224249) do
 
   add_foreign_key "team_games", "games"
   add_foreign_key "team_games", "teams"
+  add_foreign_key "teams", "games"
   add_foreign_key "teams", "users"
   add_foreign_key "users", "user_statuses"
 end

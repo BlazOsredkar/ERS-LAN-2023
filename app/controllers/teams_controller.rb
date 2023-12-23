@@ -37,6 +37,11 @@ class TeamsController < ApplicationController
       return
     end
 
+    if team_params[:game_id].blank?
+      redirect_to new_team_path, alert: 'Izberi igro.'
+      return
+    end
+
     @team = Team.new(team_params)
     @team.code = generate_random_code
     @team.user_id = current_user.id
@@ -79,7 +84,7 @@ class TeamsController < ApplicationController
       end
       @team = Team.find_by(code: params[:team_code])
       if @team
-        if @team.users.count < 4
+        if @team.users.count != @team.game.number_of_players
           if @team.user_id == current_user.id || @team.users.include?(current_user)
             flash[:alert] = 'V to ekipo si že včlanjen/a.'
             render :join, status: :unprocessable_entity
@@ -101,6 +106,10 @@ class TeamsController < ApplicationController
 
   def leave
     @team = Team.find(params[:id])
+    if @team.user_id == current_user.id
+      redirect_to teams_path, alert: 'Lastnik/ca ekipe ne more zapustiti ekipe.'
+      return
+    end
     if @team.users.include?(current_user)
       @team.users.delete(current_user)
       redirect_to teams_path, notice: 'Uspešno si zapustil/a ekipo.'
@@ -133,7 +142,7 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.fetch(:team, {}).permit(:name, game_ids: [])
+      params.fetch(:team, {}).permit(:name, :game_id)
     end
 
     def generate_random_code

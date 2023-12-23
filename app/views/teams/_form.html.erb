@@ -19,14 +19,10 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :game_ids, 'Izberi igre:', class:"text-login-or" %>
-    <% Game.all.each do |game| %>
-      <div class="form-check">
-        <%= form.check_box :game_ids, { multiple: true }, game.id, nil %>
-        <%= form.label game.name, class: 'form-check-label' %>
-      </div>
-    <% end %>
-  </div>
+    <%= form.label :game_id, 'Select a game:', class: "text-login-or" %>
+    <%= form.select :game_id, options_for_select(Game.all.map { |game| [game.name, game.id] }), {}, class: "form-control" %>
+  </div> 
+
 
 
   <div>

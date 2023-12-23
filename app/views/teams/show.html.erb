@@ -1,25 +1,26 @@
-
+<body class="login-back">
 <%= render @team %>
 
 <!-- Show owner's email -->
-<p>Owner: <%= @team.user.email %></p>
+<p class="text-light">Owner: <%= @team.user.username %></p>
 
 <!-- Show all users' email addresses in the team -->
-<p>Team Members: <%= @team.users.map(&:email).join(', ') %></p>
+<p class="text-light">Team Members: <%= @team.users.map(&:email).join(', ') %></p>
 
 
-<h2>Selected Games:</h2>
-<ul>
-  <% @team.games.each do |game| %>
-    <li><%= game.name %></li>
-  <% end %>
-</ul>
+<h2 class="text-light">Izbrana igra</h2>
+<p class="text-light"><%= @team.game.name%></p>
 
 
 <% if current_user == @team.user %>
-  <%= link_to "Edit this team", edit_team_path(@team) %> |
-  <%= link_to "Back to teams", teams_path %>
+  <%= link_to "Uredi ekipo", edit_team_path(@team) %>
+  <br>
+  <%= link_to "Nazaj na ekipe", teams_path %>
 
-  <%= button_to "Destroy this team", @team, method: :delete %>
+  <%= button_to "Izbriši ekipo", @team, method: :delete %>
+<% else %>
+  <%= link_to 'Zapusti ekipo', leave_team_path(@team), method: :delete %> 
 <% end %>
 
+
+</body>
