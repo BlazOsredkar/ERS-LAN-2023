@@ -5,10 +5,11 @@ ActiveAdmin.register Game do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :description, :link, :number_of_players
+  permit_params :name, :description, :link, :number_of_players, :picture_name
 
 
   remove_filter :number_of_players
+  remove_filter :picture_name
   #
   # or
   #

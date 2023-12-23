@@ -40,3 +40,17 @@
     }
     
 }
+
+.game-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.game-radio-button  {
+    display: none !important;
+}
+
+.game-radio-button:checked + .game-image {
+    border: 2px solid #fff;
+}
