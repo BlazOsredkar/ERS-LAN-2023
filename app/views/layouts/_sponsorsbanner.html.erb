@@ -3,7 +3,7 @@
 <% min_images_needed = 3 - (total_images % 3) %>
 
 
-
+<p class="countdown main-title-homepage">Sponzorji</p>
 <div class="custom-carousel">
   <div class="custom-carousel-item">
     <%= link_to "https://eigre.si/", target:"_blank" do %>
@@ -28,6 +28,11 @@
   <div class="custom-carousel-item">
     <%= link_to "https://store.steampowered.com/app/629760/MORDHAU/", target:"_blank" do %>
       <%= image_tag asset_path("sponsors/6.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
+    <% end %>
+  </div>
+  <div class="custom-carousel-item">
+    <%= link_to "https://kunigunda.si/", target:"_blank" do %>
+      <%= image_tag asset_path("sponsors/7.png"), class: 'custom-carousel-image', data: { carousel_target: "slide" } %>
     <% end %>
   </div>
 </div>
