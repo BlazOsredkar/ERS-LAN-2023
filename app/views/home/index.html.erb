@@ -1,12 +1,30 @@
-<body class="login-back">
-<%= image_tag asset_path("poskus_1.png"), class:"landing-page"%>
 
-<%= render 'layouts/sponsorsbanner' %>
+<%= image_tag asset_path("ers.svg"), class:"landing-page"%>
 
 
-<p class="text-login-or countdown"> Do dogodka je še samo:</p>
 
-<p id="demo" class="text-login-or countdown"></p>
+<p class="countdown main-title-homepage">COUNTDOWN</p>
+
+<div class="countdown-div">
+  <div class="countown-component">
+    <p id="days" class="countdown-text-non-static"></p>
+    <p class="countdown-text-static">DNI</p>
+  </div>
+  <div class="countown-component">
+    <p id="hours" class="countdown-text-non-static"></p>
+    <p class="countdown-text-static">UR</p>
+  </div>
+  <div class="countown-component">
+    <p id="minutes" class="countdown-text-non-static"></p>
+    <p class="countdown-text-static">MIN</p>
+  </div>
+  <div class="countown-component">
+    <p id="seconds" class="countdown-text-non-static"></p>
+    <p class="countdown-text-static">SEK</p>
+  </div>
+</div>
+
+<%= render 'layouts/sponsorsbanner' %>  
 
 <script>
 // Set the date we're counting down to
@@ -28,8 +46,10 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
     
   // If the count down is over, write some text 
   if (distance < 0) {
@@ -39,5 +59,3 @@ var x = setInterval(function() {
 }, 1000);
 </script>
 
-
-</body>

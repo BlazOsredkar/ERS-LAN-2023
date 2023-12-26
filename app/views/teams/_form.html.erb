@@ -1,4 +1,4 @@
-<body class="login-back">
+
 <%= form_with(model: team) do |form| %>
   <% if team.errors.any? %>
     <div style="color: red">
@@ -39,5 +39,3 @@
     <%= form.submit "Ustvari ekipo", class:"btn btn-primary" %>
   </div>
 <% end %>
-</body>
-

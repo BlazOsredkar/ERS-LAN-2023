@@ -79,7 +79,52 @@ form#new_user {
 
 
 .countdown {
+  color: #EB78ED;
   text-align: center;
-  font-size: 60px;
-  margin-top: 0px;
+  font-size: 36px;
+  font-style: normal;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700;
+  line-height: 133.687%; /* 48.127px */
+  text-transform: uppercase;
+}
+
+.main-title-homepage {
+  margin: 40px 0px;
+}
+
+.countdown-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 40px;
+}
+
+.countown-component p {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 0px;
+}
+
+.countdown-text-non-static {
+  color: #FFF;
+  text-align: center;
+  font-family: Be Vietnam Pro;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 133.687%; /* 96.255px */
+}
+
+.countdown-text-static {
+  color: #FFF;
+  font-family: Be Vietnam Pro;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
 }
