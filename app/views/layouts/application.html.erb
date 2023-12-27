@@ -4,20 +4,17 @@
     <title>ERŠ LAN Party 2023/24</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+    <%= csp_meta_tag %> 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= render 'application/favicon' %>
     <meta name="theme-color" content="#121212">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap" rel="stylesheet">
   </head>
 
   <body class="login-back">
-    
     <%= render 'layouts/navbar' %>
     <% if ENV['ANKETA_ACTIVE'] == 'YES' && !cookies[:anketa_banner_closed]%>
       <%= render 'layouts/fillform' %>
