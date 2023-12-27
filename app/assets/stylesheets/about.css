@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  text-align: center;
+  text-align:justify;
 }
 
 .about-section-div img {
@@ -32,8 +32,6 @@
   font-weight: bold !important;
   text-transform: uppercase !important;
     color: #EB78ED !important;
-
-
 }
 
 @media screen and (max-width: 900px) {
