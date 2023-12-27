@@ -39,7 +39,7 @@
   width: auto;
   filter: grayscale(100%); /* Convert images to black and white */
   transition: filter 0.5s ease-in-out;
-  max-height: 8vh; /* Maximum height of images */
+  max-height: 7vh; /* Maximum height of images */
 }
 
 .custom-carousel-image:hover {

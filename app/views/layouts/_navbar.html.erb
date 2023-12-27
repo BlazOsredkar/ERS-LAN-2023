@@ -1,44 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-     <%= link_to "ERŠ LAN Party 2023/24", root_path, class:"navbar-brand"%>
+     <%= link_to "ERŠ LAN Party", root_path, class:"navbar-brand"%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item <%= 'navbar-active' if current_page?(root_path) %>">
             <%= link_to "Domača stran", root_path, class:"nav-link"%>
         </li>
         <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item <%= 'navbar-active' if current_page?(teams_path) %>">
             <%= link_to "Moje ekipe", teams_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= 'navbar-active' if current_page?(join_team_path) %>">
             <%= link_to "Pridruži se ekipi", "/join/team", class: "nav-link" %>
         </li>
-        <% if user_signed_in? && current_user.admin? %>
-          <li class="nav-item">
-            <%= link_to "Admin plošča", "/admin", class: "nav-link" %>
-          </li>
-          
-        <% end %>
-        <% else %>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/sign_in">Prijava</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/sign_up">Registracija</a>
-        </li>
+          <% if user_signed_in? && current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "Admin plošča", "/admin", class: "nav-link" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
-      <ul class="navbar-nav ms-auto">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link" href="/users/edit">Pozdravljen, <%= current_user.username %></a>
           </li>
-          <li class="nav-item">
-            <%= link_to "Odjava", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          <li class="nav-link login-button-navbar">
+            <%= link_to "Odjava", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link login-button-text" %>
         </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_in">Prijava</a>
+          </li>
+          <li class="nav-item login-button-navbar">
+            <a class="nav-link login-button-text" href="/users/sign_up">Registracija</a>
+          </li>
         <% end %>
       </ul>
     </div>

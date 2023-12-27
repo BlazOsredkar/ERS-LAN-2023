@@ -58,3 +58,59 @@
     border-radius: 5px;
     
 }
+
+.login-button-navbar {
+    background-color: #fff !important;
+    color: #fff !important;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav {
+    gap: 8px;
+}
+
+.login-button-text {
+    color: #000 !important;
+    padding: 0px 8px !important;
+    text-align: center;
+    font-family: Be Vietnam Pro;
+    
+}
+
+
+
+.nav-link {
+    font-family: Be Vietnam Pro;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.navbar-brand {
+    font-family: Be Vietnam Pro;
+    margin-left: 24px;
+}
+
+@media (min-width: 990px) { 
+    .navbar {
+        height: 72px;
+    }
+
+    .navbar-nav {
+        margin-right: 24px;
+    }
+
+    .center-navbar {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+.navbar-active a {
+    color: #fff !important;
+}
