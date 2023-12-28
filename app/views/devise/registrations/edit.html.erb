@@ -1,66 +1,91 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="user-profile-edit-title">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+  </svg>
+<p class="countdown main-title-homepage user-edit-title">
+  Urejanje profila
+</p>
+</div>
 
+
+<div class="user-profile-main">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="user-profile-input">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  
 
-  <div class="field">
-    <%= f.label "Uporabniško ime:" %><br />
-    <%= f.text_field :username, autofocus: true %>
+  <div class="user-profile-two-inputs">
+    <div class="user-profile-input">
+      <%= f.label "Uporabniško ime:" %><br />
+      <%= f.text_field :username, autofocus: true %>
+    </div>
+
+    <div class="user-profile-input">
+      <%= f.label "Imam opremo:" %><br />
+      <%= f.select :has_equipment, options_for_select([['Da', true], ['Ne', false]], selected: @user.has_equipment) %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= f.label "Ime:" %><br />
-    <%= f.text_field :name, autofocus: true %>
+  <div class="user-profile-two-inputs">
+    <div class="user-profile-input">
+        <%= f.label "Ime:" %><br />
+        <%= f.text_field :name, autofocus: true %>
+    </div>
+
+
+    <div class="user-profile-input">
+      <%= f.label "Priimek:" %><br />
+      <%= f.text_field :surname, autofocus: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "Priimek:" %><br />
-    <%= f.text_field :surname, autofocus: true %>
+  <div class="user-profile-two-inputs">
+    <div class="user-profile-input">
+      <%= f.label "Novo Geslo:" %><% if @minimum_password_length %>
+        <em>(Minimalno <%= @minimum_password_length %> znakov)</em>
+      <% end %> <br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="user-profile-input">
+      <%= f.label "Potrdi geslo:" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "Imam opremo:" %><br />
-    <%= f.select :has_equipment, options_for_select([['Da', true], ['Ne', false]], selected: @user.has_equipment) %>
-  </div>
-
-
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Trenutno geslo:" %> <i>(we need your current password to confirm your changes)</i><br />
+  <div class="field rainbow-border user-profile-input last-inputs-eu">
+    <%= f.label "Trenutno geslo:" %> <i>(Če želiš shraniti spremembe je <b>potrebno trenutno geslo</b>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
-
-
-
-  <div class="actions">
-    <%= f.submit "Update" %>
   </div>
+
+
+  <div class="user-edit-confirm">
+    <%= f.submit "Posodobi profil" %>
+  </div>
+
+
+
+
 <% end %>
 
-<h3>Cancel my account</h3>
+</div>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<p class="white-text-user-profile">Si po pomoti naredil/a račun?</p>
+
+<div class="user-edit-confirm user-delete-profile">
+  <%= button_to registration_path(resource_name), data: { confirm: "Ali si prepričan/a, da želiš izbrisati račun? Te akcije ni možno povrniti!", turbo_confirm: "Ali si prepričan/a, da želiš izbrisati račun? Te akcije ni možno povrniti!" }, method: :delete do %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+      <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+    </svg>
+    Izbriši račun (neobnovljivo, zato ne brisat :P )
+  <% end %>
+</div>
 

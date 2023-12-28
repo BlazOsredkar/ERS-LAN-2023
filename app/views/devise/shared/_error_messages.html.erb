@@ -1,14 +1,13 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" data-turbo-cache="false">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+         <div class="toast-container top-0 end-0 p-3">
+          <div class="alert toast align-items-center text-bg-danger alert-dismissible fade show" role="alert">
+            <%= message %>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          </div>
       <% end %>
     </ul>
   </div>

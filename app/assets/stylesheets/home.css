@@ -77,6 +77,10 @@ form#new_user {
   gap: 1rem;
 }
 
+.countdown svg {
+  width: auto;
+  height: 40px;
+}
 
 
 .countdown {
@@ -129,6 +133,7 @@ form#new_user {
   line-height: normal;
   text-align: center;
 }
+
 
 
 @media (max-width: 768px) {
