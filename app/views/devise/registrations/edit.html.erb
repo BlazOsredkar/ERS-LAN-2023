@@ -47,8 +47,8 @@
 
   <div class="user-profile-two-inputs">
     <div class="user-profile-input">
-      <%= f.label "Novo Geslo:" %><% if @minimum_password_length %>
-        <em>(Minimalno <%= @minimum_password_length %> znakov)</em>
+      <%= f.label "Novo Geslo" %><% if @minimum_password_length %>
+        <em>(Minimalno <%= @minimum_password_length %> znakov):</em>
       <% end %> <br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
@@ -60,7 +60,7 @@
   </div>
 
   <div class="field rainbow-border user-profile-input last-inputs-eu">
-    <%= f.label "Trenutno geslo:" %> <i>(Če želiš shraniti spremembe je <b>potrebno trenutno geslo</b>)</i><br />
+    <%= f.label "Trenutno geslo" %> <i>(Če želiš shraniti spremembe je <b>potrebno trenutno geslo</b>):</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
   </div>
