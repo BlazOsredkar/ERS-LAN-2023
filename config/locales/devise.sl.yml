@@ -50,7 +50,6 @@ sl:
       unlocked: 'Vaš uporabniški račun je bil uspešno odklenjen. Prosimo, prijavite se za nadaljevanje.'
   errors:
     messages:
-      current_password_blank: "Your custom message for 'Current password can't be blank'"
       already_confirmed: "je že potrjen, prosimo poskusite se prijaviti"
       confirmation_period_expired: "mora biti potrjen znotraj %{period}, prosimo zahtevajte novega"
       expired: "je potekel, prosimo zahtevajte novega"
