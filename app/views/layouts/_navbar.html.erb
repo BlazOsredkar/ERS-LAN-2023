@@ -13,6 +13,9 @@
         <li class="nav-item <%= 'navbar-active' if current_page?(teams_path) %>">
             <%= link_to "Moje ekipe", teams_path, class: "nav-link" %>
         </li>
+        <li class="nav-item <%= 'navbar-active' if current_page?(new_team_path) %>">
+            <%= link_to "Ustvari ekipo", new_team_path, class: "nav-link" %>
+        </li>
         <li class="nav-item <%= 'navbar-active' if current_page?(join_team_path) %>">
             <%= link_to "Pridruži se ekipi", "/join/team", class: "nav-link" %>
         </li>

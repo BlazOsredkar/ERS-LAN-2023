@@ -1,9 +1,9 @@
 
-<br>
 <div id="teams" class="row row-cols-1 row-cols-md-4 g-2">
   <% @teams.each do |team| %>
     <div class="col">
       <div class="card h-100 bg-dark text-light">
+        <%= image_tag asset_path("games/thumbnails/#{team.game.picture_name}.png"), class:"card-img-top"%>
         <div class="card-body position-relative">
           <% if team.game && team.users.count + 1 == team.game.number_of_players %>
             <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count + 1 %>/<%= team.game.number_of_players %></strong>
@@ -13,7 +13,7 @@
             <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/(Ni igre)</strong>
           <% end %>
           <h3 class="card-title"><%= team.name %></h3>
-          <div class="mb-1 text-light">Ustvarjeno dne: <i><%= team.created_at %></i> </div>
+          <div class="mb-1 text-light">PIN ekipe: <b><%= team.code %></b> </div>
           <p class="card-text">Lastnik: <%= team.user.username  %></p>
           <% if team.users.count == 0 %>
             <p class="card-text">Ta ekipa je <b>brez</b> članov</p>
@@ -21,8 +21,26 @@
             <p class="card-text">Člani ekipe: <b><%= team.users.map(&:username).join(', ') %></b></p>
           <% end %>
           <p class="card-text">Izbrana igra: <%= team.game.name if team.game %></p>
-
-          <%= link_to "Pokaži to ekipo", team, class:"btn btn-primary" %>
+          <div class="buttons-teams">
+          
+         
+          <% if team.user == current_user %>
+            <%= link_to edit_team_path(team), class:"delete-team-button edit-team" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+              </svg>
+              Uredi ekipo
+            <% end %>
+          <% end %>
+          
+          
+          <%= link_to leave_team_path(team), method: :delete, class:"delete-team-button leave-team" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+              <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15zM11 2h.5a.5.5 0 0 1 .5.5V15h-1zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+            </svg>
+            Zapusti ekipo
+          <% end %>
+          </div>
           <% if team.is_verified %>
             <div class="position-absolute top-0 end-0 mt-2 me-2 d-flex align-items-center">
               <%= image_tag asset_path("checkmark.svg"), class:"checkmark-team me-1"%>
@@ -36,6 +54,4 @@
 </div>
 
 
-
-<%= link_to "New team", new_team_path %>
 
