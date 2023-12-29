@@ -157,6 +157,17 @@ p {
     }
 }
 
+@media screen and (max-width: 1320px) {
+    .verified-team-text {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .verified-team-text {
+        display: block;
+    }
+}
 
 .game-buttons {
 
