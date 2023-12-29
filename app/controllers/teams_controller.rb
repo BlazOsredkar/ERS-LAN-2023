@@ -11,10 +11,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1 or /teams/1.json
   def show
-    #show all users email that are in the team
-    @users = @team.users
-    #show the owner of the team
-    @owner = User.find(@team.user_id)
+    redirect_to teams_path, alert: 'Ta stran ne obstaja.'
   end
 
   # GET /teams/new
@@ -28,6 +25,7 @@ class TeamsController < ApplicationController
       if @team.user_id != current_user.id
         redirect_to teams_path, alert: 'Nisi lastnik/ca te ekipe.'
       end
+
   end
 
   # POST /teams or /teams.json
@@ -65,7 +63,7 @@ class TeamsController < ApplicationController
         redirect_to teams_path, alert: 'Nisi lastnik/ca te ekipe.'
       else
         if @team.update(team_params)
-          format.html { redirect_to team_url(@team), notice: "Ekipa je bila uspešno urejena!" }
+          format.html { redirect_to teams_url, notice: "Ekipa je bila uspešno urejena!" }
           format.json { render :show, status: :ok, location: @team }
         else
           format.html { render :edit, status: :unprocessable_entity }

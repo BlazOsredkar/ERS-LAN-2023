@@ -93,6 +93,10 @@
 }
 
 
+p {
+    margin: 0px;
+    font-family: Be Vietnam Pro;
+}
 
 .leave-team svg {
     color: red;
