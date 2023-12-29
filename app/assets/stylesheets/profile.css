@@ -78,6 +78,20 @@ form#edit_user {
   .user-profile-input select {
     width: 100%;
   }
+
+  .user-edit-title{
+    font-size: 24px;
+  }
+
+  .user-profile-edit-title svg {
+    width: auto;
+    height: 32px !important;
+  }
+
+  .user-delete-profile button {
+    font-size: 14px;
+    padding: 0px 20% !important;
+  }
     
 }
 
