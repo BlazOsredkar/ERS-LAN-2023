@@ -46,7 +46,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to team_url(@team), notice: "Ekipa je bila uspešno ustvarjena!" }
+        format.html { redirect_to teams_path, notice: "Ekipa je bila uspešno ustvarjena!" }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -88,7 +88,7 @@ class TeamsController < ApplicationController
             render :join, status: :unprocessable_entity
           else
             @team.users << current_user
-            redirect_to @team, notice: 'Uspešno si se včlanil/a v ekipo.'
+            redirect_to teams_url, notice: 'Uspešno si se včlanil/a v ekipo.'
           end
         else
           flash[:alert] = 'Ekipo je že polna.'

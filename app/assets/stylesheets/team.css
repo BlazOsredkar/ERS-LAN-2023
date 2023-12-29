@@ -52,9 +52,12 @@
 }
 
 .game-radio-button:checked + .game-image {
-    border: 2px solid #fff;
+    border: 3px solid green;
 }
 
+.game-name {
+    text-align: center
+}
 .delete-team-button {
     background-color: #fff;
     border: 1px solid #000;
@@ -113,3 +116,76 @@ p {
     align-items: center;
     justify-content: center;
 }
+
+
+.empty-teams {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: #D9D9D9;
+    margin: 90px 20%;
+    padding: 20px 10px;
+    border-radius: 8px;
+}
+
+.empty-teams-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.empty-teams-text h3 {
+    font-family: Be Vietnam Pro;
+    font-size: 24px;
+    font-weight: 400;
+    color: #EB78ED;
+    text-transform: uppercase;
+}
+
+.empty-teams-text p {
+    font-family: Be Vietnam Pro;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+}
+
+@media screen and (max-width: 768px) {
+    .empty-teams {
+        margin: 90px 8%;
+    }
+}
+
+
+.game-buttons {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.game-radio {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.create-team-form {
+    margin: 20px 25%;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .game-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .create-team-form {
+        margin: 20px 8%;
+    }
+}
+
