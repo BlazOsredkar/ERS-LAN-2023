@@ -200,3 +200,20 @@ p {
     }
 }
 
+
+.btn-pin {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-family: Be Vietnam Pro;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-pin:hover {
+    color: #fff;
+    text-decoration: underline;
+}
