@@ -42,7 +42,7 @@
 }
 
 .game-image {
-    width: 100px;
+    width: auto;
     height: 100px;
     object-fit: cover;
 }
