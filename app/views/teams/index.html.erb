@@ -17,7 +17,7 @@
             <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/(Ni igre)</strong>
           <% end %>
           <h3 class="card-title"><%= team.name %></h3>
-          <div class="mb-1 text-light" id="">PIN ekipe:<button class="btn-pin" onclick="copyContent()" id="pin-code"><%= team.code %></button> </div>
+          <div class="mb-1 text-light" id="">PIN ekipe:<button class="btn-pin" onclick="copyContent(this)" id="pin-code"><%= team.code %></button> </div>
           <p class="card-text">Lastnik: <%= team.user.username  %></p>
           <% if team.users.count == 0 %>
             <p class="card-text">Ta ekipa je <b>brez</b> članov</p>
@@ -61,13 +61,13 @@
 
 
 <script>
-  let text = document.getElementById('pin-code').innerHTML;
-  const copyContent = async () => {
+  const copyContent = async (element) => {
     try {
+      const text = element.innerHTML;
       await navigator.clipboard.writeText(text);
-      document.getElementById('pin-code').innerHTML = 'Koda kopirana!';
+      element.innerHTML = 'Koda kopirana!';
       setTimeout(() => {
-        document.getElementById('pin-code').innerHTML = text;
+        element.innerHTML = text;
       }, 1000);
     } catch (err) {
       console.error('Failed to copy: ', err);

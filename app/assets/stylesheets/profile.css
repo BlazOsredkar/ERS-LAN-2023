@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   margin: 20px 10%;
+  flex-direction: column;
 }
 
 .user-profile-two-inputs {

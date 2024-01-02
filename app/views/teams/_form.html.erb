@@ -8,16 +8,16 @@
 </p>
 </div>
 
-<div class="user-profile-main create-team-form">
+
 <%= form_with(model: team) do |form| %>
   
-
+<div class="user-profile-main create-team-form">
   <div class="user-profile-input">
     <%= form.label "Ime ekipe:" %>
     <%= form.text_field :name %>
   </div>
 
-<div class="user-profile-input">
+  <div class="user-profile-input">
     <%= form.label :game_id, 'Izberi igro:' %>
     <div class="game-buttons">
       <% Game.all.each do |game| %>
@@ -29,11 +29,10 @@
       <% end %>
     </div>
   </div>
-
-
-
 </div>
+
   <div class="user-edit-confirm">
     <%= form.submit "Ustvari ekipo" %>
   </div>
 <% end %>
+

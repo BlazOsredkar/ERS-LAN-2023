@@ -9,8 +9,9 @@
 </div>
 
 
-<div class="user-profile-main">
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="user-profile-main">
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="user-profile-input">
@@ -63,15 +64,19 @@
     <%= f.label "Trenutno geslo" %> <i>(Če želiš shraniti spremembe je <b>potrebno trenutno geslo</b>):</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+  
+
+
+  
+
+
+
   </div>
 
 
-  <div class="user-edit-confirm">
+<div class="user-edit-confirm">
     <%= f.submit "Posodobi profil" %>
-  </div>
-
-
-
+</div>
 
 <% end %>
 
