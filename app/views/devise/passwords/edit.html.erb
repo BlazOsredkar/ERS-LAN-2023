@@ -1,25 +1,44 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="container-login">
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <%= image_tag asset_path("pass_update.svg"), class: 'img-fluid img-login' %>
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.hidden_field :reset_password_token %>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example13">Novo geslo <i>(Minimalno <%= @minimum_password_length %> znakov).</i></label>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form-control form-control-lg" %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example13">Ponovi novo geslo</label>
+            <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class:"form-control form-control-lg" %>
+          </div>
+
+          <!-- Submit button -->
+          <%= f.submit "Potrdi", class:"btn btn-primary btn-lg btn-block" %>
+
+
+
+        <% end %>
+
+        <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-login-or">ALI</p>
+          </div>
+          
+          <div class="login-links">
+            <%= render "devise/shared/links" %>
+          </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
+</div>

@@ -114,3 +114,7 @@
 .navbar-active a {
     color: #fff !important;
 }
+
+input.btn.btn-primary.btn-lg.btn-block {
+    width: 100%;
+}
