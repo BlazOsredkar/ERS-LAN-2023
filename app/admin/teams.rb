@@ -52,7 +52,7 @@ ActiveAdmin.register Team do
       row :users do |team|
         table_for team.users.order('username ASC') do
           column "Včlanjeni" do |user|
-            link_to user.username, admin_user_path(ufauser)
+            user.username
           end
           column "Ime in priimek" do |user|
             user.name + " " + user.surname
