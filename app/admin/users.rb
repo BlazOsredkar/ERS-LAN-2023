@@ -30,4 +30,20 @@ ActiveAdmin.register User do
     actions
   end
 
+
+  #dont show other things on edit
+  form do |f|
+    f.inputs do
+      f.input :email
+      f.input :username
+      f.input :name
+      f.input :surname
+      f.input :user_status
+      f.input :has_equipment
+      f.input :isadmin
+    end
+    f.actions
+
+  end
+
 end
