@@ -1,0 +1,36 @@
+
+<% if @teams.count == 0%>
+  <%= render 'teams/emptystateverified' %>
+<% end %>
+
+
+<div id="teams" class="row row-cols-1 row-cols-md-4 g-2">
+  <% @teams.each do |team| %>
+    <div class="col">
+      <div class="card h-100 bg-dark text-light">
+        <%= image_tag asset_path("games/thumbnails/#{team.game.picture_name}.png"), class:"card-img-top"%>
+        <div class="card-body position-relative">
+          <% if team.game && team.users.count + 1 == team.game.number_of_players %>
+            <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count + 1 %>/<%= team.game.number_of_players %></strong>
+          <% elsif team.game && team.users.count + 1 != team.game.number_of_players  %>
+            <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count + 1 %>/<%= team.game.number_of_players %></strong>
+          <% else %>
+            <strong class="d-inline-block mb-2 text-primary">Št članov: <%= team.users.count %>/(Ni igre)</strong>
+          <% end %>
+          <h3 class="card-title"><%= team.name %></h3>
+          <p class="card-text">Igra: <%= team.game.name if team.game %></p>
+          <div class="buttons-teams">
+          
+          
+          </div>
+          <% if team.is_verified %>
+            <div class="position-absolute top-0 end-0 mt-2 me-2 d-flex align-items-center">
+              <%= image_tag asset_path("checkmark.svg"), class:"checkmark-team me-1", title:"Ta ekipa je potrjena"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

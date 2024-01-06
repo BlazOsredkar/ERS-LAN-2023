@@ -131,6 +131,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def verified_teams
+    @teams = Team.where(is_verified: true)
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.

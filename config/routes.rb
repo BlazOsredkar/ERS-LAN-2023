@@ -16,4 +16,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index", as: :root
+
+  get "/verified_teams", to: "teams#verified_teams", as: :verified_teams
+  
 end
