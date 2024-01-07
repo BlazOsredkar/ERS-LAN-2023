@@ -35,7 +35,12 @@ class TeamsController < ApplicationController
       return
     end
 
-    
+    if ENV['STREAM_ACTIVE'] == 'YES'
+      redirect_to teams_path, alert: 'Ekipe ni mogoče ustvariti, ker je dogodek v živo.'
+      return
+    end
+
+
     if team_params[:name].blank?
       redirect_to new_team_path, alert: 'Vnesi ime ekipe.'
       return
