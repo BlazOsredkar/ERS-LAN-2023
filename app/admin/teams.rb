@@ -18,9 +18,55 @@ ActiveAdmin.register Team do
   #
   #
   #
+  #
+  #
+
+
 
 
   remove_filter :is_verified
+
+  controller do
+    def update
+      @team = Team.find(params[:id])
+      if @team.update(permitted_params[:team])
+        # Add logic to trigger Discord notification if is_verified changes to true
+        if @team.saved_change_to_is_verified?(from: false, to: true)
+          notification_content = "Ekipa **#{@team.name}** je bila potrjena za dogodek!"
+          send_discord_notification(notification_content)
+        end
+        redirect_to admin_team_path(@team)
+      else
+        render :edit
+      end
+    end
+
+    private
+
+    def send_discord_notification(content)
+      bot = Discordrb::Bot.new token: ENV['BOT_TOKEN']
+      channel = bot.channel(ENV['BOT_CHANNEL_ID'])
+      fancy_message = {
+        embeds: [
+          {
+            title: 'Nova ekipa je bila potrjena!',
+            description: content,
+            color: 002074, # Hex color code, you can use any color
+            fields: [],
+            author: {
+              name: 'lanparty.scv.si', # Replace with your name
+              icon_url: 'https://cdn-icons-png.flaticon.com/512/4158/4158206.png'
+            }
+          }
+
+        ]
+      }
+      require 'rest-client'
+      RestClient.post(ENV['SERVER_WEBHOOK'], fancy_message.to_json, content_type: :json)
+
+
+    end
+  end
 
 
   #create remove_from_team_admin_team_path
