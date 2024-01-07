@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   root "home#index", as: :root
 
   get "/verified_teams", to: "teams#verified_teams", as: :verified_teams
-  
+  get "/stream", to: "home#stream", as: :stream
+
 end

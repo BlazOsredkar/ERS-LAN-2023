@@ -9,7 +9,13 @@
         <li class="nav-item <%= 'navbar-active' if current_page?(root_path) %>">
             <%= link_to "Domača stran", root_path, class:"nav-link"%>
         </li>
+        <% if ENV['STREAM_ACTIVE'] == 'YES'%>
+          <li class="nav-item <%= 'navbar-active' if current_page?(stream_path) %>">
+              <%= link_to "Stream", stream_path, class:"nav-link colored-text"%>
+          </li>
+        <% end %>
         <% if user_signed_in? %>
+        <% if current_user && current_user.user_status.name != 'Drugo (Gledalec)' %>
         <li class="nav-item <%= 'navbar-active' if current_page?(teams_path) %>">
             <%= link_to "Moje ekipe", teams_path, class: "nav-link" %>
         </li>
@@ -19,6 +25,7 @@
         <li class="nav-item <%= 'navbar-active' if current_page?(join_team_path) %>">
             <%= link_to "Pridruži se ekipi", "/join/team", class: "nav-link" %>
         </li>
+        <% end %>
         <li class="nav-item <%= 'navbar-active' if current_page?(verified_teams_path) %>">
             <%= link_to "Potrjene ekipe", verified_teams_path, class: "nav-link" %>
         </li>

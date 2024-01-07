@@ -30,6 +30,12 @@ class TeamsController < ApplicationController
 
   # POST /teams or /teams.json
   def create
+    if current_user && current_user.user_status.name == 'Drugo (Gledalec)'
+      redirect_to teams_path, alert: 'Ekipe ni mogoče ustvariti, ker imaš status Drugo - Gledalec.'
+      return
+    end
+
+    
     if team_params[:name].blank?
       redirect_to new_team_path, alert: 'Vnesi ime ekipe.'
       return
@@ -39,6 +45,7 @@ class TeamsController < ApplicationController
       redirect_to new_team_path, alert: 'Izberi igro.'
       return
     end
+
 
     @team = Team.new(team_params)
     @team.code = generate_random_code
@@ -74,8 +81,13 @@ class TeamsController < ApplicationController
   end
 
   def join
+    if current_user && current_user.user_status.name == 'Drugo (Gledalec)'
+      redirect_to root_path, alert: 'Včlanitev v ekipo ni možna, ker imaš status Drugo - Gledalec.'
+      return
+    end
     if request.post?
       #check if the user entered a code
+
       if params[:team_code].blank?
         redirect_to join_team_path, alert: 'Nisi vnesel kode ekipe. Poskusi znova.'
         return
