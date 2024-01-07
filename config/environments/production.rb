@@ -99,7 +99,7 @@ Rails.application.configure do
     domain:               ENV['MAIL_DOMAIN'],
     user_name:            ENV['MAIL_USER'],
     password:             ENV['MAIL_PASSWORD'],
-    authentication:       'plain',
+    authentication:       ENV['MAIL_AUTH'],
     enable_starttls_auto: true
   }
   config.action_mailer.default_url_options = { :host => ENV['HOST'], :protocol => 'https' }
