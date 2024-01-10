@@ -80,7 +80,6 @@ ActiveAdmin.register Team do
       column "Koda", :code
       column "Lastnik", :user
       column "Je potrjena", :is_verified
-      column "Izbrana igra", :game
       column "Je ekipa polna", :is_full do |team|
         if team.users.count+1 == team.game.number_of_players
           status_tag "YES"
@@ -88,6 +87,10 @@ ActiveAdmin.register Team do
           status_tag "NO"
         end
       end
+      column "Število članov", :users do |team|
+        "#{(team.users.count + 1)} / #{team.game.number_of_players}"
+      end
+      column "Izbrana igra", :game
     actions
   end
 
