@@ -198,6 +198,10 @@ p {
     .create-team-form {
         margin: 20px 8%;
     }
+
+    .game-image {
+        height: 75px;
+    }
 }
 
 
