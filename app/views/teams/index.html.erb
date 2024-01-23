@@ -7,7 +7,11 @@
   <% @teams.each do |team| %>
     <div class="col">
       <div class="card h-100 bg-dark text-light">
-        <%= image_tag asset_path("games/thumbnails/#{team.game.picture_name}.png"), class:"card-img-top"%>
+        <% if team.avatar.attached? && team.image_verified %>
+          <%= image_tag team.avatar, class:"card-img-top"%>
+        <% else %>
+          <%= image_tag asset_path("games/thumbnails/#{team.game.picture_name}.png"), class:"card-img-top"%>
+        <% end %>
         <div class="card-body position-relative">
           <% if team.game && team.users.count + 1 == team.game.number_of_players %>
             <strong class="d-inline-block mb-2 text-danger">Št članov: <%= team.users.count + 1 %>/<%= team.game.number_of_players %></strong>

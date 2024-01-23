@@ -1,0 +1,49 @@
+#drag-and-drop-container {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    height: 110px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#drag-and-drop-container input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.drag-text svg {
+        width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    
+}
+
+.drag-text { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.drag-text p {
+    margin: 0px;
+    padding: 0px;
+}
+
+@media (max-width: 768px) {
+    #drag-and-drop-container p {
+        font-size: 10px;
+    }
+    .drag-text {
+        margin: 6%;
+    }
+}

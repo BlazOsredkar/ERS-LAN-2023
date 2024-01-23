@@ -5,7 +5,7 @@ ActiveAdmin.register Team do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :code, :user_id, :is_verified
+  permit_params :name, :code, :user_id, :is_verified, :image_verified, :avatar, :game_id
   #
   # or
   #
@@ -15,10 +15,15 @@ ActiveAdmin.register Team do
   #   permitted
   # end
 
+  #fix the issue regarding Ransack needs ActiveStorage::Attachment attributes explicitly allowlisted as searchable
+
+  filter :avatar_attachment, as: :string
 
 
 
   remove_filter :is_verified
+  remove_filter :image_verified
+  remove_filter :avatar_attachment
 
   controller do
     def update
@@ -91,6 +96,8 @@ ActiveAdmin.register Team do
         "#{(team.users.count + 1)} / #{team.game.number_of_players}"
       end
       column "Izbrana igra", :game
+      column "Slika potrjena", :image_verified
+
     actions
   end
 
@@ -110,6 +117,13 @@ ActiveAdmin.register Team do
           column "Vrži iz ekipe" do |user|
             link_to "Vrži", remove_from_team_admin_team_path(team, user_id: user.id), method: :delete, data: { confirm: 'Ali si prepričan?' }
           end
+        end
+      end
+      row :avatar do |team|
+        if team.avatar.attached?
+          image_tag url_for(team.avatar), width: 200
+        else
+          "Ni slike"
         end
       end
     end

@@ -18,6 +18,21 @@
   </div>
 
   <div class="user-profile-input">
+    <%= form.label "Slika ekipe:" %>
+  </div>
+  <div data-controller="drag-and-drop-excel" data-drag-and-drop-excel-target="container" id="drag-and-drop-container" class="upload-students-file">
+    
+      <%= form.file_field :avatar, id: 'file-input', data: {drag_and_drop_excel_target:"fileInput"} %>
+      <div class="drag-text">
+        <svg>
+        <path d="M7.35313 0.147266C7.15938 -0.0464844 6.84062 -0.0464844 6.64687 0.147266L2.64687 4.14727C2.45312 4.34102 2.45312 4.65977 2.64687 4.85352C2.84062 5.04727 3.15938 5.04727 3.35313 4.85352L6.5 1.70664V10.5004C6.5 10.7754 6.725 11.0004 7 11.0004C7.275 11.0004 7.5 10.7754 7.5 10.5004V1.70664L10.6469 4.85352C10.8406 5.04727 11.1594 5.04727 11.3531 4.85352C11.5469 4.65977 11.5469 4.34102 11.3531 4.14727L7.35313 0.147266ZM1 10.5004C1 10.2254 0.775 10.0004 0.5 10.0004C0.225 10.0004 0 10.2254 0 10.5004V13.5004C0 14.8816 1.11875 16.0004 2.5 16.0004H11.5C12.8813 16.0004 14 14.8816 14 13.5004V10.5004C14 10.2254 13.775 10.0004 13.5 10.0004C13.225 10.0004 13 10.2254 13 10.5004V13.5004C13 14.3285 12.3281 15.0004 11.5 15.0004H2.5C1.67188 15.0004 1 14.3285 1 13.5004V10.5004Z" fill="#4765FF"/>
+        </svg>
+        <p data-drag-and-drop-excel-target="dragText">Iz računalnika naloži sliko ali jo povleci v to polje (MAX 5MB)</p>
+      </div>
+  </div>
+  <br>
+
+  <div class="user-profile-input">
     <%= form.label :game_id, 'Izberi igro:' %>
     <div class="game-buttons">
       <% Game.all.each do |game| %>

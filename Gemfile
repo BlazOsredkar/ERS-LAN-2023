@@ -81,7 +81,12 @@ gem "bootstrap", "~> 5.0"
 gem 'sassc-rails'
 gem 'arctic_admin'
 gem 'activeadmin'
+gem 'activestorage-validator'
 gem "chartkick"
+gem "image_processing", ">= 1.2"
+gem "mini_magick"
+
+gem "aws-sdk-s3", require: false
 
 
 gem 'sprockets', '< 4.0.0'

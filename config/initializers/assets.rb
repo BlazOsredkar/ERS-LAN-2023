@@ -7,6 +7,7 @@ Rails.application.config.assets.precompile += %w( controllers/hello_controller.j
 Rails.application.config.assets.precompile += %w( controllers/index.js )
 Rails.application.config.assets.precompile += %w( jquery.min.js )
 Rails.application.config.assets.precompile += %w( game_select.js )
+Rails.application.config.assets.precompile += %w( controllers/drag_and_drop_excel_controller.js )
 # Add additional assets to the asset load path.`)
 # Rails.application.config.assets.paths << Emoji.images_path
 
