@@ -36,7 +36,7 @@ class DiscordNotificationsController < ApplicationController
 
       # Example of sending the fancy message using webhook (replace 'WEBHOOK_URL' with your actual webhook URL)
       require 'rest-client'
-      RestClient.post(ENV['SERVER_WEBHOOK'], fancy_message.to_json, content_type: :json)
+      RestClient.post(ENV['SERVER_WEBHOOK_NOTIFS'], fancy_message.to_json, content_type: :json)
 
       render plain: 'Notification sent to Discord!'
     else
