@@ -3,6 +3,12 @@ class DiscordNotificationsController < ApplicationController
   before_action :authenticate_admin_user!
   def send_notification
     content = params[:content] # You can retrieve the notification content from the request
+    role = params[:role] # You can retrieve the notification content from the request
+
+    if content.blank? || role.blank?
+      redirect_to discord_send_path, alert: 'Vnesi vse podatke.'
+      return
+    end
 
     bot = Discordrb::Bot.new token: ENV['BOT_TOKEN']
 
@@ -13,6 +19,7 @@ class DiscordNotificationsController < ApplicationController
     if current_user.admin?
       # Example of a fancy message using Discord webhook format
       fancy_message = {
+        content: '<@&' + role + '>',
         embeds: [
           {
             title: 'Novo obvestilo',

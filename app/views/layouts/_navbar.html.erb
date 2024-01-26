@@ -29,6 +29,9 @@
             <li class="nav-item">
               <%= link_to "Admin plošča", "/admin", class: "nav-link" %>
             </li>
+            <li class="nav-item <%= 'navbar-active' if current_page?(discord_send_path) %>">
+              <%= link_to "POD", discord_send_path, class: "nav-link" %>
+            </li>
           <% end %>
         <% end %>
         <li class="nav-item <%= 'navbar-active' if current_page?(join_team_path) %>">
