@@ -46,4 +46,26 @@ ActiveAdmin.register User do
 
   end
 
+
+  collection_action :send_email_view, method: :get do
+  end
+
+  collection_action :send_email, method: :post do
+    subject = params[:subject]
+    body = params[:body]
+    @users = User.all.where(isadmin: false)
+    @users.each do |user|
+      UserMailer.send_email_to_user(user, subject, body).deliver_later
+    end
+    redirect_to admin_users_path, notice: "Mail je bil uspešno poslan!"
+  end
+
+
+
+
+  #create an action that sends email to all users
+  action_item :send_email, only: :index do
+    link_to 'Pošlji mail vsem', send_email_view_admin_users_path
+  end
+
 end

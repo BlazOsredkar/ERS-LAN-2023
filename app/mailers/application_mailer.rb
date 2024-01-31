@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "ERŠ LAN Party 2023/24 <#{ENV['MAIL_USER']}>"
   layout "mailer"
 end

@@ -1,0 +1,14 @@
+
+
+
+<h1>POŠLJI EMAIL</h1>
+
+<%= form_tag send_email_admin_users_path, :method => :post do %>
+  <%= label_tag :subject %>
+  <%= text_field_tag :subject, params[:subject] %>
+
+  <%= label_tag :body %>
+  <%= text_area_tag :body, params[:body] %>
+
+  <%= submit_tag "Pošlji" %>
+<% end %>
